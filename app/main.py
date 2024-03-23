@@ -9,12 +9,12 @@ import time
 # Load the pre-trained model
 
 def load_model():
-    model_path =  "https://github.com/nikhilkhetwal/brain/raw/main/app/trained_model/Brain_Tumor.h5"
+    model_path =  "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/trained_model/BT.h5"
     return tf.keras.models.load_model(model_path)
 
 # Load the class indices
 def load_class_indices():
-    class_indices_path = https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/class_indices.json
+    class_indices_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/class_indices.json"
     with open(class_indices_path) as f:
         return json.load(f)
 

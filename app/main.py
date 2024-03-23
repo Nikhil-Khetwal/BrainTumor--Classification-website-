@@ -14,7 +14,7 @@ def load_model():
 
 # Load the class indices
 def load_class_indices():
-    class_indices_path = "https://raw.githubusercontent.com/nikhilkhetwal/brain/main/app/class_indices.json"
+    class_indices_path = https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/class_indices.json
     with open(class_indices_path) as f:
         return json.load(f)
 

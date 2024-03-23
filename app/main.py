@@ -115,7 +115,7 @@ def main():
             st.write("")
             st.write("")
 
-            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/2.jpg", width=300, output_format="JPEG", use_column_width=300)
+            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/2.png", width=300, output_format="JPEG", use_column_width=300)
             st.markdown("""
                 ### What is a Tumor?
 
@@ -134,7 +134,7 @@ def main():
             st.write("")
             st.write("")
           
-            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/3.jpg", width=300, output_format="JPEG", use_column_width=300)
+            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/3.png", width=300, output_format="JPEG", use_column_width=300)
             st.markdown("""
             ### Symptoms of Brain Tumors
 

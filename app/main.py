@@ -5,19 +5,7 @@ import numpy as np
 import tensorflow as tf
 import streamlit as st
 import time
-
-# Load the pre-trained model
-
-def load_model():
-    model_path =  "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/trained_model/BT.h5"
-    return tf.keras.models.load_model(model_path)
-
-# Load the class indices
-def load_class_indices():
-    class_indices_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/class_indices.json"
-    with open(class_indices_path) as f:
-        return json.load(f)
-
+import requests
 
 # Function to preprocess the image
 def preprocess_image(image):
@@ -38,10 +26,24 @@ def predict_image_class(model, image, class_indices):
 def main():
     st.set_page_config(page_title="🧠 Brain Tumor Classifier", layout="wide")
 
-    # Load the pre-trained model and class indices
-    model = load_model()
-    class_indices = load_class_indices()
+    # Load the pre-trained model
+    model_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/trained_model/BT.h5"
+    model_filename = "BT.h5"
 
+    # Download the model file locally
+    with open(model_filename, "wb") as f:
+        response = requests.get(model_path)
+        f.write(response.content)
+
+    # Load the model from the local file
+    model = tf.keras.models.load_model(model_filename)
+
+    # URL to the raw class indices file on GitHub
+    class_indices_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/class_indices.json"
+
+    # Load the class indices from the raw GitHub URL
+    response = requests.get(class_indices_path)
+    class_indices = json.loads(response.content)
 
     # Dictionary containing information related to different tumor types
     tumor_info = {
@@ -65,7 +67,6 @@ def main():
     uploaded_image = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
     st.divider()
 
-
     prediction = None  # Initialize prediction variable
 
     # Flag to track if an image is uploaded
@@ -74,6 +75,7 @@ def main():
     if uploaded_image is not None:
         image_uploaded = True
         image = Image.open(uploaded_image)
+
         st.write("")
         st.write("")
 
@@ -113,7 +115,7 @@ def main():
             st.write("")
             st.write("")
 
-            st.image("C:/Users/Admin/Downloads/brain/app/2.jpg", width=300, output_format="JPEG", use_column_width=300)
+            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/2.jpg", width=300, output_format="JPEG", use_column_width=300)
             st.markdown("""
                 ### What is a Tumor?
 
@@ -132,7 +134,7 @@ def main():
             st.write("")
             st.write("")
           
-            st.image("C:/Users/Admin/Downloads/brain/app/3.jpg", width=300, output_format="JPEG", use_column_width=300)
+            st.image("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/img/3.jpg", width=300, output_format="JPEG", use_column_width=300)
             st.markdown("""
             ### Symptoms of Brain Tumors
 

@@ -7,8 +7,8 @@ import streamlit as st
 import time
 import requests
 from streamlit.components.v1 import html
-
-with open("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/google_analytics.html") as f:
+new = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/google_analytics.html"
+with open(new) as f:
     html_string = f.read()
     html(html_string)
     

@@ -6,7 +6,7 @@ import tensorflow as tf
 import streamlit as st
 import time
 import requests
-from add_ga import inject_ga
+
 
 
 # Function to preprocess the image

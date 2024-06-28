@@ -9,7 +9,7 @@ import requests
 import streamlit.components.v1 as components
 
 # Include Google Analytics tracking code
-google_analytics_path = Path("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/google_analytics.html")
+google_analytics_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/google_analytics.html"
 
 if google_analytics_path.exists():
     with open(google_analytics_path, "r") as f:

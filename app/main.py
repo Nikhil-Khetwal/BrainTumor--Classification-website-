@@ -6,7 +6,7 @@ import tensorflow as tf
 import streamlit as st
 import time
 import requests
-from streamlit.components.v1 import html
+
 
     
 # Function to preprocess the image
@@ -189,4 +189,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

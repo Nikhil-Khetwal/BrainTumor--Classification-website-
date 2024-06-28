@@ -8,19 +8,6 @@ import time
 import requests
 import streamlit.components.v1 as components
 
-# Include Google Analytics tracking code
-google_analytics_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/google_analytics.html"
-
-if google_analytics_path.exists():
-    with open(google_analytics_path, "r") as f:
-        html_code = f.read()
-        st.components.v1.html(html_code, height=0)
-else:
-    st.warning("Google Analytics HTML file not found!")
-
-
-
-
 # Function to preprocess the image
 def preprocess_image(image):
     target_size = (224, 224)
@@ -58,6 +45,27 @@ def main():
     # Load the class indices from the raw GitHub URL
     response = requests.get(class_indices_path)
     class_indices = json.loads(response.content)
+
+        # Function to fetch Google Analytics HTML code
+    def fetch_google_analytics_code(google_analytics_path):
+        response = requests.get(google_analytics_path)
+        if response.status_code == 200:
+            return response.text
+        else:
+            return None
+
+    # Google Analytics HTML path
+    google_analytics_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/google_analytics.html"
+
+    # Fetch Google Analytics HTML code
+    google_analytics_code = fetch_google_analytics_code(google_analytics_path)
+
+    if google_analytics_code:
+        # Display Google Analytics tracking code
+        st.components.v1.html(google_analytics_code, height=0)
+    else:
+        st.warning("Google Analytics HTML code not found or unable to fetch.")
+
 
     # Dictionary containing information related to different tumor types
     tumor_info = {

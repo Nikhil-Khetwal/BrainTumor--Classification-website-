@@ -8,6 +8,7 @@ import time
 import requests
 from streamlit.components.v1 import html
 
+    
 # Function to preprocess the image
 def preprocess_image(image):
     target_size = (224, 224)
@@ -27,26 +28,6 @@ def predict_image_class(model, image, class_indices):
 def main():
     st.set_page_config(page_title="🧠 Brain Tumor Classifier", layout="wide")
 
-    # Function to fetch Google Analytics HTML code
-    def fetch_google_analytics_code(google_analytics_url):
-        response = requests.get(google_analytics_url)
-        if response.status_code == 200:
-            return response.text
-        else:
-            return None
-
-    # Google Analytics HTML URL
-    google_analytics_url = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/google_analytics.html"
-
-    # Fetch Google Analytics HTML code
-    google_analytics_code = fetch_google_analytics_code(google_analytics_url)
-
-    if google_analytics_code:
-        # Display Google Analytics tracking code
-        st.components.v1.html(google_analytics_code, height=0)
-    else:
-        st.warning("Google Analytics HTML code not found or unable to fetch.")
-
     # Load the pre-trained model
     model_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/trained_model/BT.h5"
     model_filename = "BT.h5"
@@ -65,6 +46,7 @@ def main():
     # Load the class indices from the raw GitHub URL
     response = requests.get(class_indices_path)
     class_indices = json.loads(response.content)
+
 
     # Dictionary containing information related to different tumor types
     tumor_info = {
@@ -164,7 +146,7 @@ def main():
     
     # Display image without rounded corners at the bottom if no image is uploaded
     if not image_uploaded:
-        st.title("📚 Information on Brain Tumor")
+        st.title("📚 Inforamtion on Brain Tumor")
 
         col1, col2 = st.columns([1, 1])
 
@@ -207,3 +189,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

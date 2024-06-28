@@ -6,8 +6,12 @@ import tensorflow as tf
 import streamlit as st
 import time
 import requests
-import streamlit.components.v1 as components
+from streamlit.components.v1 import html
 
+with open("google_analytics.html") as f:
+    html_string = f.read()
+    html(html_string)
+    
 # Function to preprocess the image
 def preprocess_image(image):
     target_size = (224, 224)

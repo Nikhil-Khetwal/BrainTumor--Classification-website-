@@ -51,47 +51,54 @@ def main():
     model_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/trained_model/BT.h5"
     model_filename = "BT.h5"
 
-    try:
-        # Download the model file locally
-        with open(model_filename, "wb") as f:
-            response = requests.get(model_path)
-            f.write(response.content)
+    # Download the model file locally
+    with open(model_filename, "wb") as f:
+        response = requests.get(model_path)
+        f.write(response.content)
 
-        # Load the model from the local file
-        model = tf.keras.models.load_model(model_filename)
+    # Load the model from the local file
+    model = tf.keras.models.load_model(model_filename)
 
-        # URL to the raw class indices file on GitHub
-        class_indices_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/class_indices.json"
+    # URL to the raw class indices file on GitHub
+    class_indices_path = "https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/raw/master/app/class_indices.json"
 
-        # Load the class indices from the raw GitHub URL
-        response = requests.get(class_indices_path)
-        class_indices = json.loads(response.content)
-
-    except Exception as e:
-        st.error(f"Failed to load model or class indices: {e}")
-        return
+    # Load the class indices from the raw GitHub URL
+    response = requests.get(class_indices_path)
+    class_indices = json.loads(response.content)
 
     # Dictionary containing information related to different tumor types
     tumor_info = {
         "Glioma": {
             "Description": "Gliomas are often treated with a combination of surgery, radiation therapy, and chemotherapy. The treatment plan depends on the size and location of the tumor.",
             "Symptoms": [
-                "Headaches", "Seizures", "Nausea or vomiting", "Changes in vision",
-                "Memory loss", "Weakness or paralysis"
+                "Headaches",
+                "Seizures",
+                "Nausea or vomiting",
+                "Changes in vision",
+                "Memory loss",
+                "Weakness or paralysis"
             ]
         },
         "Meningioma": {
             "Description": "Meningiomas are usually slow-growing tumors that may not require immediate treatment. However, they can cause symptoms if they press against the brain or spinal cord.",
             "Symptoms": [
-                "Headaches", "Weakness or numbness in arms or legs", "Changes in vision or hearing",
-                "Seizures", "Personality changes"
+                "Headaches",
+                "Weakness or numbness in arms or legs",
+                "Changes in vision or hearing",
+                "Seizures",
+                "Personality changes"
             ]
         },
         "Pituitary": {
             "Description": "Pituitary tumors can affect hormone levels in the body, leading to a variety of symptoms. Treatment options include medication, surgery, and radiation therapy.",
             "Symptoms": [
-                "Headaches", "Vision loss or changes", "Fatigue", "Mood changes",
-                "Irregular menstrual periods", "Weight gain or loss", "Loss of libido"
+                "Headaches",
+                "Vision loss or changes",
+                "Fatigue",
+                "Mood changes",
+                "Irregular menstrual periods",
+                "Weight gain or loss",
+                "Loss of libido"
             ]
         },
         "No Tumor": {
@@ -157,7 +164,7 @@ def main():
     
     # Display image without rounded corners at the bottom if no image is uploaded
     if not image_uploaded:
-        st.title("📚 Inforamtion on Brain Tumor")
+        st.title("📚 Information on Brain Tumor")
 
         col1, col2 = st.columns([1, 1])
 

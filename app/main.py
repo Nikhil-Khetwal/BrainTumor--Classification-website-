@@ -28,7 +28,7 @@ def predict_image_class(model, image, class_indices):
 def main():
     st.set_page_config(page_title="🧠 Brain Tumor Classifier", layout="wide")
         # Function to fetch Google Analytics HTML code
-    def fetch_google_analytics_code(google_analytics_url):
+        def fetch_google_analytics_code(google_analytics_url):
             response = requests.get(google_analytics_url)
             if response.status_code == 200:
                 return response.text

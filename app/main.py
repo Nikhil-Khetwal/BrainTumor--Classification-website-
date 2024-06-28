@@ -11,12 +11,12 @@ import streamlit.components.v1 as components
 # Include Google Analytics tracking code
 google_analytics_path = Path("https://github.com/Nikhil-Khetwal/BrainTumor--Classification-website-/blob/master/app/google_analytics.html")
 
-    if google_analytics_path.exists():
-        with open(google_analytics_path, "r") as f:
-            html_code = f.read()
-            st.components.v1.html(html_code, height=0)
-    else:
-        st.warning("Google Analytics HTML file not found!")
+if google_analytics_path.exists():
+    with open(google_analytics_path, "r") as f:
+        html_code = f.read()
+        st.components.v1.html(html_code, height=0)
+else:
+    st.warning("Google Analytics HTML file not found!")
 
 
 
